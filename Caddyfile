@@ -1,0 +1,13 @@
+flabs.fiorilabs.tech {
+    # Backend API routes
+    handle /api/* {
+        reverse_proxy backend:8000
+    }
+
+    # Frontend (React SPA)
+    handle {
+        root * /srv
+        try_files {path} /index.html
+        file_server
+    }
+}
